@@ -1,5 +1,51 @@
 {
-  "products": [],
+  "products": [
+    {
+      "id": 1,
+      "product_name": "Notebook Dell",
+      "quantity": 10,
+      "price": {
+        "cost": 299.99,
+        "sale": 399.99
+      }
+    },
+    {
+      "id": 2,
+      "product_name": "Notebook Dell",
+      "quantity": 10,
+      "price": {
+        "cost": 299.99,
+        "sale": 399.99
+      }
+    },
+    {
+      "id": 3,
+      "product_name": "Notebook Dell",
+      "quantity": 10,
+      "price": {
+        "cost": 299.99,
+        "sale": 399.99
+      }
+    },
+    {
+      "id": 4,
+      "product_name": "Notebook Dell",
+      "quantity": 10,
+      "price": {
+        "cost": 299.99,
+        "sale": 399.99
+      }
+    },
+    {
+      "id": 5,
+      "product_name": "Notebook Dell",
+      "quantity": 10,
+      "price": {
+        "cost": 299.99,
+        "sale": 399.99
+      }
+    }
+  ],
   "users": [
     {
       "id": 1,
@@ -8,3 +54,4 @@
     }
   ]
 }
+
