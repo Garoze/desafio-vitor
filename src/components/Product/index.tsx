@@ -4,6 +4,7 @@ import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai';
 import { api } from '../../services/api';
 
 import { EditModal } from '../EditModal';
+import { ConfirmModal } from '../ConfirmModal';
 
 import { Td, EditContainer } from './styles';
 
@@ -23,10 +24,14 @@ type ProductProps = {
 };
 
 export const Product = ({ product, handleUpdate }: ProductProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const openEditModal = () => setIsEditModalOpen(true);
+  const closeEditModal = () => setIsEditModalOpen(false);
+
+  const openConfirmModal = () => setIsConfirmModalOpen(true);
+  const closeConfirmModal = () => setIsConfirmModalOpen(false);
 
   const handleDelete = async () => {
     console.log(product.id);
@@ -37,7 +42,16 @@ export const Product = ({ product, handleUpdate }: ProductProps) => {
 
   return (
     <>
-      {isModalOpen && <EditModal product={product} closeModal={closeModal} />}
+      {isEditModalOpen && (
+        <EditModal product={product} closeModal={closeEditModal} />
+      )}
+      {isConfirmModalOpen && (
+        <ConfirmModal
+          closeModal={closeConfirmModal}
+          handleUpdate={handleUpdate}
+          callBack={handleDelete}
+        />
+      )}
       <tr key={product.id}>
         <Td>{product.product_name}</Td>
         <Td>{product.quantity}</Td>
@@ -55,10 +69,10 @@ export const Product = ({ product, handleUpdate }: ProductProps) => {
         </Td>
         <Td>
           <EditContainer>
-            <button onClick={openModal}>
+            <button onClick={openEditModal}>
               <AiOutlineEdit size={25} />
             </button>
-            <button onClick={handleDelete}>
+            <button onClick={openConfirmModal}>
               <AiOutlineDelete size={25} />
             </button>
           </EditContainer>

@@ -53,15 +53,6 @@
         "cost": 29.99,
         "sale": 39.99
       }
-    },
-    {
-      "id": 7,
-      "product_name": "Celular Samsung",
-      "quantity": 4,
-      "price": {
-        "cost": 199.99,
-        "sale": 299.99
-      }
     }
   ],
   "users": [
