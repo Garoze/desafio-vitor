@@ -43,7 +43,11 @@ export const Product = ({ product, handleUpdate }: ProductProps) => {
   return (
     <>
       {isEditModalOpen && (
-        <EditModal product={product} closeModal={closeEditModal} />
+        <EditModal
+          product={product}
+          closeModal={closeEditModal}
+          handleUpdate={handleUpdate}
+        />
       )}
       {isConfirmModalOpen && (
         <ConfirmModal

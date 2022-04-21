@@ -29,9 +29,14 @@ type Product = {
 type EditModalProps = {
   product: Product;
   closeModal: () => void;
+  handleUpdate: () => void;
 };
 
-export const EditModal = ({ product, closeModal }: EditModalProps) => {
+export const EditModal = ({
+  product,
+  closeModal,
+  handleUpdate,
+}: EditModalProps) => {
   const element = document.getElementById('root');
   if (!element) return null;
 
@@ -51,6 +56,7 @@ export const EditModal = ({ product, closeModal }: EditModalProps) => {
       },
     };
     await api.patch(`/products/${editedProduct.id}`, editedProduct);
+    handleUpdate();
     closeModal();
   };
 
