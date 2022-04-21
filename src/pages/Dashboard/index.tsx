@@ -5,6 +5,7 @@ import { api } from '../../services/api';
 import { Product } from '../../components/Product';
 
 import { AddProduct, Container, Table, Th } from './styles';
+import { AddModal } from '../../components/AddModal';
 
 type Product = {
   id: number;
@@ -18,6 +19,7 @@ type Product = {
 
 export const Dashboard = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [addProductModal, setAddProductModal] = useState(false);
 
   const fetchProducts = async () => {
     const { data } = await api.get<Product[]>('/products');
@@ -30,9 +32,19 @@ export const Dashboard = () => {
     fetchProducts();
   }, []);
 
+  const openModal = () => setAddProductModal(true);
+  const closeModal = () => setAddProductModal(false);
+
   return (
     <Container>
-      <AddProduct>
+      {addProductModal && (
+        <AddModal
+          productsLen={products.length}
+          closeModal={closeModal}
+          handleUpdate={handleUpdate}
+        />
+      )}
+      <AddProduct onClick={openModal}>
         Novo produto
         <AiOutlinePlus size={18} />
       </AddProduct>
