@@ -44,15 +44,6 @@
         "cost": 299.99,
         "sale": 399.99
       }
-    },
-    {
-      "id": 6,
-      "product_name": "Caixa de som",
-      "quantity": 5,
-      "price": {
-        "cost": 29.99,
-        "sale": 39.99
-      }
     }
   ],
   "users": [

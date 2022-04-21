@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { AiOutlinePlus } from 'react-icons/ai';
 
 import { api } from '../../services/api';
@@ -18,6 +20,8 @@ type Product = {
 };
 
 export const Dashboard = () => {
+  const history = useNavigate();
+
   const [products, setProducts] = useState<Product[]>([]);
   const [addProductModal, setAddProductModal] = useState(false);
 
@@ -25,10 +29,18 @@ export const Dashboard = () => {
     const { data } = await api.get<Product[]>('/products');
     setProducts(data);
   };
-
   const handleUpdate = () => fetchProducts();
 
+  const isLoggedUser = () => {
+    const token = localStorage.getItem('login@token');
+    if (token) {
+      if (JSON.parse(token)) return;
+    }
+    history('/');
+  };
+
   useEffect(() => {
+    isLoggedUser();
     fetchProducts();
   }, []);
 
