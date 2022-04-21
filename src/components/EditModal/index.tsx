@@ -26,12 +26,12 @@ type Product = {
   };
 };
 
-type ModalProps = {
+type EditModalProps = {
   product: Product;
   closeModal: () => void;
 };
 
-export const EditModal = ({ product, closeModal }: ModalProps) => {
+export const EditModal = ({ product, closeModal }: EditModalProps) => {
   const element = document.getElementById('root');
   if (!element) return null;
 

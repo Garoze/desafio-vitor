@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { AiOutlineEdit, AiOutlineDelete, AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 import { api } from '../../services/api';
+import { Product } from '../../components/Product';
 
-import { AddProduct, Container, EditContainer, Table, Td, Th } from './styles';
+import { AddProduct, Container, Table, Th } from './styles';
 
 type Product = {
   id: number;
@@ -18,12 +19,14 @@ type Product = {
 export const Dashboard = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await api.get<Product[]>('/products');
-      setProducts(data);
-    };
+  const fetchProducts = async () => {
+    const { data } = await api.get<Product[]>('/products');
+    setProducts(data);
+  };
 
+  const handleUpdate = () => fetchProducts();
+
+  useEffect(() => {
     fetchProducts();
   }, []);
 
@@ -45,32 +48,11 @@ export const Dashboard = () => {
         </thead>
         <tbody>
           {products.map((product) => (
-            <tr key={product.id}>
-              <Td>{product.product_name}</Td>
-              <Td>{product.quantity}</Td>
-              <Td>
-                {new Intl.NumberFormat('pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL',
-                }).format(product.price.cost)}
-              </Td>
-              <Td>
-                {new Intl.NumberFormat('pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL',
-                }).format(product.price.sale)}
-              </Td>
-              <Td>
-                <EditContainer>
-                  <button>
-                    <AiOutlineEdit size={25} />
-                  </button>
-                  <button>
-                    <AiOutlineDelete size={25} />
-                  </button>
-                </EditContainer>
-              </Td>
-            </tr>
+            <Product
+              key={product.id}
+              product={product}
+              handleUpdate={handleUpdate}
+            />
           ))}
         </tbody>
       </Table>
