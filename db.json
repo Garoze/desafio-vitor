@@ -1,0 +1,38 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "product_name": "Notebook Dell",
+      "quantity": 5,
+      "price": {
+        "cost": 399.99,
+        "sale": 499.99
+      }
+    },
+    {
+      "id": 2,
+      "product_name": "Notebook Dell",
+      "quantity": 5,
+      "price": {
+        "cost": 399.99,
+        "sale": 499.99
+      }
+    },
+    {
+      "id": 3,
+      "product_name": "Notebook Dell",
+      "quantity": 5,
+      "price": {
+        "cost": 399.99,
+        "sale": 499.99
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "admin",
+      "password": "admin"
+    }
+  ]
+}
